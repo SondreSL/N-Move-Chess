@@ -128,7 +128,7 @@ mainSection : Html msg
 mainSection =
     let
         boardColors =
-            { white = rgb 255 255 255, black = rgb 0 0 0 }
+            { white = rgb 255 219 172, black = rgb 141 85 36 }
 
         rowStyle =
             [ css
@@ -143,7 +143,6 @@ mainSection =
             [ css
                 [ width (px 100)
                 , height (px 100)
-                , border3 (px 1) solid (rgb 0 0 0)
                 , backgroundColor boardColors.black
                 ]
             ]
