@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Css exposing (..)
-import Html.Styled exposing (Html, div, h1, img, text, toUnstyled)
+import Html.Styled exposing (Html, div, footer, h1, img, main_, nav, text, toUnstyled)
 import Html.Styled.Attributes exposing (src)
 
 
@@ -36,11 +36,28 @@ update msg model =
 ---- VIEW ----
 
 
+navBar =
+    nav [] []
+
+
+headerSection =
+    navBar
+
+
+mainSection =
+    main_ [] []
+
+
+footerSection =
+    footer [] []
+
+
 view : Model -> Html Msg
 view model =
     div []
-        [ img [ src "/logo.svg" ] []
-        , h1 [] [ text "Your Chess App is working!" ]
+        [ headerSection
+        , mainSection
+        , footerSection
         ]
 
 
