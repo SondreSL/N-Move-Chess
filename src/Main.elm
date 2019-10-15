@@ -127,10 +127,15 @@ headerSection =
 mainSection : Html msg
 mainSection =
     let
+        boardColors =
+            { white = rgb 255 255 255, black = rgb 0 0 0 }
+
         rowStyle =
             [ css
                 [ displayFlex
                 , flexDirection row
+                , nthOfType "even" [ children [ typeSelector "div" [ nthOfType "odd" [ backgroundColor boardColors.white ] ] ] ]
+                , nthOfType "odd" [ children [ typeSelector "div" [ nthOfType "even" [ backgroundColor boardColors.white ] ] ] ]
                 ]
             ]
 
@@ -139,7 +144,7 @@ mainSection =
                 [ width (px 100)
                 , height (px 100)
                 , border3 (px 1) solid (rgb 0 0 0)
-                , backgroundColor (rgb 100 0 0)
+                , backgroundColor boardColors.black
                 ]
             ]
     in
