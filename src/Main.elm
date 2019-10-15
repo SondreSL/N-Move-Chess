@@ -2,8 +2,8 @@ module Main exposing (..)
 
 import Browser
 import Css exposing (..)
-import Html.Styled exposing (Html, div, footer, h1, img, main_, nav, text, toUnstyled)
-import Html.Styled.Attributes exposing (src)
+import Html.Styled exposing (..)
+import Html.Styled.Attributes exposing (css)
 
 
 
@@ -37,7 +37,20 @@ update msg model =
 
 
 navBar =
-    nav [] []
+    nav
+        [ css
+            [ displayFlex
+            , flexDirection row
+            , justifyContent spaceBetween
+            , alignItems center
+            , width (pct 100)
+            , height (rem 4)
+            , padding2 zero (rem 1)
+            , backgroundColor (rgb 0 0 255)
+            , color (rgb 255 255 255)
+            ]
+        ]
+        [ span [ css [ fontSize (rem 2) ] ] [ text "N-Chess" ] ]
 
 
 headerSection =
@@ -54,7 +67,13 @@ footerSection =
 
 view : Model -> Html Msg
 view model =
-    div []
+    div
+        [ css
+            [ displayFlex
+            , flexDirection column
+            , width (pct 100)
+            ]
+        ]
         [ headerSection
         , mainSection
         , footerSection
