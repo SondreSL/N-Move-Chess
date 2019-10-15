@@ -40,36 +40,35 @@ update msg model =
 
 navLink : String -> String -> Html msg
 navLink url t =
-    div
-        [ css
-            [ displayFlex
-            , flexDirection column
-            , justifyContent center
-            , alignItems center
-            , margin2 zero (rem 1)
-            , position relative
-            , hover
-                [ children
-                    [ typeSelector "span"
-                        [ bottom (px 5)
-                        , opacity (int 1)
+    let
+        containerStyle =
+            css
+                [ displayFlex
+                , flexDirection column
+                , justifyContent center
+                , alignItems center
+                , margin2 zero (rem 1)
+                , position relative
+                , hover
+                    [ children
+                        [ typeSelector "span"
+                            [ bottom (px 5)
+                            , opacity (int 1)
+                            ]
                         ]
                     ]
                 ]
-            ]
-        ]
-        [ a
-            [ href url
-            , css
+
+        linkStyle =
+            css
                 [ color (rgb 255 255 255)
                 , textDecoration none
                 , fontSize (rem 1.5)
                 , margin2 (px 7) zero
                 ]
-            ]
-            [ text t ]
-        , span
-            [ css
+
+        underlineStyle =
+            css
                 [ width (pct 100)
                 , height (px 2)
                 , opacity (int 0)
@@ -82,8 +81,11 @@ navLink url t =
                     , Css.Transitions.opacity3 150 0 easeInOut
                     ]
                 ]
-            ]
-            []
+    in
+    div
+        [ containerStyle ]
+        [ a [ href url, linkStyle ] [ text t ]
+        , span [ underlineStyle ] []
         ]
 
 
