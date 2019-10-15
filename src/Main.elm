@@ -95,7 +95,25 @@ headerSection =
 
 mainSection : Html msg
 mainSection =
-    main_ [] []
+    let
+        boardStyle =
+            [ css
+                [ displayFlex
+                , flexDirection row
+                ]
+            ]
+
+        rowStyle =
+            [ css
+                [ width (px 100)
+                , height (px 100)
+                , border3 (px 1) solid (rgb 0 0 0)
+                , backgroundColor (rgb 100 0 0)
+                ]
+            ]
+    in
+    main_ []
+        (List.repeat 8 (div boardStyle (List.repeat 8 (div rowStyle []))))
 
 
 footerSection : Html msg
