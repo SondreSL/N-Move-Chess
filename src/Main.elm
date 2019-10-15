@@ -96,14 +96,14 @@ headerSection =
 mainSection : Html msg
 mainSection =
     let
-        boardStyle =
+        rowStyle =
             [ css
                 [ displayFlex
                 , flexDirection row
                 ]
             ]
 
-        rowStyle =
+        cellStyle =
             [ css
                 [ width (px 100)
                 , height (px 100)
@@ -112,8 +112,17 @@ mainSection =
                 ]
             ]
     in
-    main_ []
-        (List.repeat 8 (div boardStyle (List.repeat 8 (div rowStyle []))))
+    main_
+        [ css
+            [ displayFlex
+            , flexDirection column
+            , justifyContent center
+            , alignItems center
+            , width (pct 100)
+            , padding (rem 1)
+            ]
+        ]
+        (List.repeat 8 (div rowStyle (List.repeat 8 (div cellStyle []))))
 
 
 footerSection : Html msg
