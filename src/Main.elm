@@ -12,6 +12,31 @@ import Html.Styled.Attributes exposing (css, href)
 ---- MODEL ----
 
 
+type Cell
+    = Empty
+    | King
+    | Queen
+    | Rook
+    | Bishop
+    | Knight
+    | Pawn
+
+
+type PlayerColor
+    = White
+    | Black
+
+
+pieces =
+    [ [ Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook ]
+    , List.repeat 8 Pawn
+    ]
+
+
+initialBoard =
+    pieces ++ List.repeat 4 (List.repeat 8 Empty) ++ List.reverse pieces
+
+
 type alias Model =
     {}
 
